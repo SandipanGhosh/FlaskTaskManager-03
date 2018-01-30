@@ -108,5 +108,22 @@ class AllTests(unittest.TestCase):
 		response = self.app.get('tasks/')
 		self.assertIn(b'You need to login first.', response.data)
 
+	# task helpers
+	def create_user(self, name, email, password):
+		new_user = User(name=name, email=email, password=password)
+		db.session.add(new_user)
+		db.session.commit()
+
+	def create_task(self):
+		return self.app.post('add/', 
+			data=dict(
+				name='Write test cases',
+				due_date='01/30/2018',
+				priority='1',
+				posted_date='01/30/2018',
+				status='1'
+				),
+			follow_redirects=True)
+
 if __name__ == "__main__":
 	unittest.main()
