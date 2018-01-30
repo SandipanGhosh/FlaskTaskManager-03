@@ -6,6 +6,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 DATABASE = 'flasktaskr.db'
+TESTING = False
 CSRF_ENABLED = True
 SECRET_KEY = 'myprecious'
 
